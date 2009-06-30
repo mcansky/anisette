@@ -1,0 +1,13 @@
+<h2><%= project.name %></h2>
+
+<% project.repositories.each do |r| %>
+  <h3><%= r.name %></h3>
+  <% r.branches.each do |b| %>
+    <h4><%= b.name %></h4>
+    <ul>
+    <% b.commits.each do |c| %>
+      <li><%= c.sha %> by <%= c.author_name %> @ <%= c.commited_time %><br /><p><%= c.log %></p></li>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>
