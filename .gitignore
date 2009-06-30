@@ -1,5 +1,5 @@
 
-g/*.log
+log/*.log
 tmp/**/*
 doc/api
 doc/app
