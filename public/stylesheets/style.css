@@ -196,3 +196,12 @@ div.note_pix {
   width: 40px;
   height: 40px;
 }
+
+input {
+  color: #C96333 ;
+  border: 1px solid #a9aa8e;
+  margin: 5px;
+}
+form {
+  margin: 5px;
+}

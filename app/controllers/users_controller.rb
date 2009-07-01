@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
-    render :layout => "no_project"
   end
  
   def create
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
-      render :action => 'new', :layout => "no_project"
+      render :action => 'new'
     end
   end
 end

@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
-    render :layout => "no_project"
   end
 
   def create

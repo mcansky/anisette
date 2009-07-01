@@ -32,6 +32,11 @@
       <li class="menu"><a href="/commits/" >Commits</a></li>
       <li class="menu"><a href="/bugs/" >Bugs</a></li>
       <li class="menu"><a href="/bugs/new" >New Bug</a></li>
+      <% if (logged_in?) %>
+        <li class="menu"><a href="/logout" >Logout</a></li>
+      <% else %>
+        <li class="menu"><a href="/login" >Login</a></li>
+      <% end %>
       <li class="menu"><a href="" >Settings</a></li>
     </ul>
   </div>
