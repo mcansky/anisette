@@ -5,19 +5,22 @@
 
     <% if (session[:repository_id]) %>
       <% active_repo = Repository.find(session[:repository_id]) %>
+    <% else %>
+      <% active_repo = @project.repositories.find_by_name('origin') %>
+    <% end %>
       <div class="last_commits">
           <h3>Bugs</h3>
-          <% active_repo.bugs.last(10).each do |@e| %>
+          <% active_repo.bugs.last(10).reverse.each do |@e| %>
             <%= render :partial => "shared/bug" %>
           <% end %>
         <div class="clear"></div>
 
           <h3>Commits</h3>
-          <% active_repo.commits.last(10).each do |@e| %>
+          <% active_repo.commits.last(10).reverse.each do |@e| %>
             <%= render :partial => "shared/commit" %>
           <% end %>
 
-        <div class="commit">
+        <!-- <div class="commit">
           <div class="fix_pix"></div>
           <h4><a href="">#243</a> by thom @ 24/06/09</a></h4>
           <p>the lgo zeif zef  fix #234 ef ze qzefgq zefg qzg gqzer ger gqre vqe vqer qver qzer ervqe rghg srthtyj nty jn serg t(h tyndtyjtyj e f fe qer g rg erg rgqw qz erg</p>
@@ -27,10 +30,9 @@
           <div class="note_pix"></div>
           <h4>On <a href="">#243</a> by thom @ 24/06/09</h4>
           <p>the lgo zeif zef  fix #234 ef ze qzefgq zefg qzg gqzer ger gqre vqe vqer qver qzer ervqe rghg srthtyj nty jn serg t(h tyndtyjtyj e f fe qer g rg erg rgqw qz erg</p>
-        </div>
+        </div>-->
 
       </div>
-    <% end %>
     <div class="clear"></div>
   
   </div>

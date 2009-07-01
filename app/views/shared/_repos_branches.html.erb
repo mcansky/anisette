@@ -6,6 +6,9 @@
         <% end%>
         <li class="branch"><a href="/repositories/new" alt="Add repository" title="Add repository" ><img src="/images/add_repo.png" /></a></li>
       </ul>
+      <% active_repo = Repository.find(session[:repository_id]) %>
+      <div class="sub">active : <%= active_repo.path %> (<%= active_repo.name %>)</div>
+
       <ul class="branches">
         <lh>Branches :</lh>
         <% @project.repositories.each do |r| %>

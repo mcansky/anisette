@@ -10,7 +10,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    logout_keeping_session!
     @project = Project.new(params[:project])
     session[:repository_id] = nil
     current_user.projects << @project
