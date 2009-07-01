@@ -1,0 +1,5 @@
+      <div class="commit">
+        <div class="bug_pix"></div>
+        <h4>#<a href="/bugs/show/<%= @e.id %>"><%= @e.local_id %></a> by <%= @e.author.login %> @ <%= @e.created_at.strftime("%x") %></h4>
+        <p><%= @e.short_desc %></p>
+      </div>

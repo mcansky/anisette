@@ -6,7 +6,7 @@
 
       <div class="commit">
         <div class="commit_pix"></div>
-        <h4><%= @commit.short_sha %><%= @commit.author.name %> @ <%= @commit.commited_time %> on branch <a href="branch"><%= @commit.branch.name %></a></h4>
+        <h4><%= @commit.short_sha %><%= @commit.author.name %> @ <%= @commit.commited_time.strftime("%x") %> on branch <a href="branch"><%= @commit.branch.name %></a></h4>
         <p><%= @commit.log %></p>
       </div>
 

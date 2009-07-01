@@ -1,5 +1,6 @@
 class AnisetteCommit < ActiveRecord::Base
   belongs_to :branch
+  belongs_to :author, :class_name => "User", :foreign_key => "author_id"
 
   def short_sha
     sha_size = self.sha.size
@@ -15,6 +16,21 @@ class AnisetteCommit < ActiveRecord::Base
     else
       return self.log[0,42] + " ..."
     end
+  end
+
+  def check_and_set_author
+    if (self.author == nil)
+      u_name = ''
+      begin
+        u_name = User.find_by_login(self.author_name)
+        u_name.commits << self
+        return true
+      rescue
+        u_name = ''
+      end
+      return false
+    end
+    return true
   end
 
 end

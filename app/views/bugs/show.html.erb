@@ -5,8 +5,8 @@
     <div class="last_commits">
 
       <div class="commit">
-        <div class="commit_pix"></div>
-        <h4>#<%= @bug.local_id =><%= @bug.title %><%= @bug.author.login %> @ <%= @bug.createdAt %> on repo <a href="branch"><%= @bug.repository.name %></a></h4>
+        <div class="bug_pix"></div>
+        <h4>#<%= @bug.local_id %><%= @bug.title %><%= @bug.author.login %> @ <%= @bug.created_at %> on repo <a href="branch"><%= @bug.repository.name %></a></h4>
         <p><%= @bug.desc %></p>
       </div>
 

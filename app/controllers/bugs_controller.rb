@@ -19,8 +19,18 @@ class BugsController < ApplicationController
       @bug.repository_id = Project.find(session[:project_id]).repositories.find_by_name('origin').id
     end
     r_id = @bug.repository_id
+    if (@bug.repository.bugs.size > 0)
+      @bug.local_id = @bug.repository.bugs.last.local_id + 1
+    else
+      @bug.local_id = 1
+    end
+    current_user.bugs << @bug
     success = @bug && @bug.save
     if success && @bug.errors.empty?
+      e = Event.new(:event_id => @bug.id)
+      e.event_type = 1
+      e.save
+      @bug.repository.events << e
       redirect_to("/projects/get/#{session[:project_id]}")
       flash[:notice] = "Thanks for reporting !"
     else

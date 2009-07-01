@@ -15,12 +15,25 @@ namespace :git do
           end
           a_branch = a_repository.branches.find_by_name(b.name)
           repo.commits(b.name,100).each do |c|
-            a_commit = AnisetteCommit.new(:sha => c.id,
+            if not (a_branch.commits.find_by_sha(c.id))
+              a_commit = AnisetteCommit.new(:sha => c.id,
                                           :log => c.message,
                                           :author_name => c.author.name,
                                           :commited_time => c.committed_date)
-            if not (a_branch.commits.find_by_sha(a_commit.sha))
               a_branch.commits << a_commit
+              a_commit.save
+              # add the corresponding event
+              e = Event.new(:event_id => a_commit.id)
+              e.event_type = 0
+              e.save
+              a_commit.branch.repository.events << e
+              # check for fixes in commit message
+              bugs_ids = []
+              a_msg = c.message
+              pattern = /\s(fix|fixes|close)\s#([0-9]+)/
+              #while ( pattern =~ a_msg ) do
+                #bugs_ids << a_msg.slice!(Regexp.last_match[3])
+              #end
             end
           end
           a_branch.save
@@ -29,6 +42,7 @@ namespace :git do
     end
   end
 
+  desc "Purge commits DB !!"
   task(:purge => :environment) do
     projects = Project.find(:all)
     projects.each do |a_project|

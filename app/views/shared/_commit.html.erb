@@ -1,0 +1,5 @@
+          <div class="commit">
+            <div class="commit_pix"></div>
+            <h4><a href="/commits/get/<%= @e.id %>"><%= @e.short_sha %></a> by <%= @e.author_name %> @ <%= @e.commited_time.strftime("%x") %> on branch <a href="branch"><%= @e.branch.name %></a></h4>
+            <p><%= @e.short_log %></p>
+          </div>

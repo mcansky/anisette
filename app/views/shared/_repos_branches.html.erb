@@ -2,14 +2,14 @@
       <ul class="branches">
         <lh>Repositories :</lh>
         <% @project.repositories.each do |r| %>
-        <li class="branch"><a href="" ><%= r.name %></a></li>        
+        <li class="branch"><a href="/projects/get/<%= @project.id %>" ><%= r.name %></a></li>        
         <% end%>
       </ul>
       <ul class="branches">
         <lh>Branches :</lh>
         <% @project.repositories.each do |r| %>
           <% r.branches.each do |b| %>
-          <li class="branch"><a href="" ><%= b.name %></a></li>        
+          <li class="branch"><a href="/projects/get/<%= @project.id %>" ><%= b.name %></a></li>        
           <% end %>
         <% end %>
       </ul>
