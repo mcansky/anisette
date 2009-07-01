@@ -7,14 +7,12 @@
       <h3>Lately</h3>
 
       <% @project.repositories.each do |r| %>
-        <% r.branches.each do |b| %>
-          <% b.commits.last(2).each do |c| %>
-            <div class="commit">
-              <div class="commit_pix"></div>
-              <h4><a href="/commits/get/<%= c.id %>"><%= c.short_sha %></a> by <%= c.author_name %> @ <%= c.commited_time %> on branch <a href="branch"><%= b.name %></a></h4>
-              <p><%= c.short_log %></p>
-            </div>
-          <% end %>
+        <% r.commits.last(2).each do |c| %>
+          <div class="commit">
+            <div class="commit_pix"></div>
+            <h4><a href="/commits/get/<%= c.id %>"><%= c.short_sha %></a> by <%= c.author_name %> @ <%= c.commited_time %> on branch <a href="branch"><%= c.branch.name %></a></h4>
+            <p><%= c.short_log %></p>
+          </div>
         <% end %>
       <% end %>
 
