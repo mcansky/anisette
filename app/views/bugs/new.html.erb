@@ -1,0 +1,18 @@
+  <div class="project">
+    <div class="last_commits">
+
+    <h4>Report a bug</h4>
+
+    <%= error_messages_for :bug %>
+    <% form_for :bug, @bug, :url => { :action => "create" } do |f| -%>
+    <p><%= label_tag 'title' %><br/>
+    <%= f.text_field :title %></p>
+
+    <p><%= label_tag 'Description' %><br/>
+    <%= text_area_tag(:desc, "Hi, nice site", :size => "24x6") %>
+
+    <p><%= submit_tag 'Report !' %></p>
+    <% end -%>
+
+    </div>
+  </div>

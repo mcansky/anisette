@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def get
     @project = Project.find(params[:id])
+    session[:project_id] = @project.id
     render :layout => 'project'
   end
 end

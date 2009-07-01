@@ -205,3 +205,10 @@ input {
 form {
   margin: 5px;
 }
+textarea {
+  color: #C96333 ;
+  border: 1px solid #a9aa8e;
+  margin: 5px;
+}
+
+

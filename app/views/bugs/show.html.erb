@@ -6,8 +6,8 @@
 
       <div class="commit">
         <div class="commit_pix"></div>
-        <h4><%= @commit.short_sha %><%= @commit.author_name %> @ <%= @commit.commited_time %> on branch <a href="branch"><%= @commit.branch.name %></a></h4>
-        <p><%= @commit.log %></p>
+        <h4>#<%= @bug.local_id =><%= @bug.title %><%= @bug.author.login %> @ <%= @bug.createdAt %> on repo <a href="branch"><%= @bug.repository.name %></a></h4>
+        <p><%= @bug.desc %></p>
       </div>
 
     </div>
