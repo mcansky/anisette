@@ -136,6 +136,18 @@ div.bugs lh {
 div.bugs li.bug {
   margin-left: 5px;
 }
+div.bugs li.fix {
+  margin-left: 5px;
+}
+div.bugs li.fix a {
+  margin-left: 5px;
+  color: #C96333 ;
+  text-decoration: line-through;
+}
+div.bugs li.fix a:hover { 
+  text-decoration: line-through;
+}
+
 div.bugs li.bug a {
   margin-left: 5px;
   color: #C96333 ;
@@ -154,10 +166,11 @@ div.last_commits {
 
 div.last_commits h3 {
   font-size: 14px;
+  margin-top: 10px;
 }
 
 div.last_commits div.commit {
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 10px;
 }
 div.commit h4 {
@@ -178,6 +191,7 @@ div.commit_pix {
   background: transparent url("../images/commit_little.png");
   width: 40px;
   height: 40px;
+  margin-top: -5px;
 }
 div.bug_pix {
   float: left;

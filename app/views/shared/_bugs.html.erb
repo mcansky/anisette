@@ -1,21 +1,20 @@
     <div class="bugs">
       <div class="mask"></div>
+      <% if (session[:repository_id]) %>
+        <% active_repo = Repository.find(session[:repository_id]) %>
       <div class="active_bugs">
         <ul class="bugs">
-          <lh>Active Bugs</lh>
-          <li class="bug"><a href="" >#234</a> by thom</li>
-          <li class="bug"><a href="" >#254</a> by thom</li>
-          <li class="bug"><a href="" >#143</a> by thom</li>
-          <li class="bug"><a href="" >#22</a> by thom</li>
+          <lh>Bugs</lh>
+          <% active_repo.bugs.last(30).each do |e| %>
+            <% if e.state == "fixed" %>
+              <li class="fix">
+            <% else %>
+              <li class="bug">
+            <% end %>
+            <a href="/bugs/show/<%= e.id %>">#<%= e.local_id %></a> by <%= e.author.login %></li>
+          <% end %>
         </ul>
+      <% end %>
       </div>
-      <div class="resolved_bugs">
-        <ul class="bugs">
-          <lh>Resolved Bugs</lh>
-          <li class="bug"><a href="" >#234</a> by thom @ <a href="">9a7b6d...1da7a8</a></li>
-          <li class="bug"><a href="" >#254</a> by thom @ <a href="">9a7b6d...1da7a8</a></li>
-          <li class="bug"><a href="" >#143</a> by thom @ <a href="">9a7b6d...1da7a8</a></li>
-          <li class="bug"><a href="" >#22</a> by thom @ <a href="">9a7b6d...1da7a8</a></li>
-        </ul>
-      </div>
+      <div class="clear"></div>
     </div>
