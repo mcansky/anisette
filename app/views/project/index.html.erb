@@ -1,9 +1,42 @@
-<html>
-<head></head>
 
-<body>
-<%= render :partial => "shared/project" %> 
+  <div class="project">
+    <%= render :partial => "shared/repos_branches" %>
+    <%= render :partial => "shared/bugs" %>
 
-</body>
+    <div class="last_commits">
+      <h3>Lately</h3>
 
-</html>
+      <% @project.repositories.each do |r| %>
+        <% r.branches.each do |b| %>
+          <% b.commits.last(2).each do |c| %>
+            <div class="commit">
+              <div class="commit_pix"></div>
+              <h4><a href="/commit/get/<%= c.id %>"><%= c.short_sha %></a> by <%= c.author_name %> @ <%= c.commited_time %> on branch <a href="branch"><%= b.name %></a></h4>
+              <p><%= c.short_log %></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <div class="commit">
+        <div class="fix_pix"></div>
+        <h4><a href="">#243</a> by thom @ 24/06/09</a></h4>
+        <p>the lgo zeif zef  fix #234 ef ze qzefgq zefg qzg gqzer ger gqre vqe vqer qver qzer ervqe rghg srthtyj nty jn serg t(h tyndtyjtyj e f fe qer g rg erg rgqw qz erg</p>
+      </div>
+
+      <div class="commit">
+        <div class="note_pix"></div>
+        <h4>On <a href="">#243</a> by thom @ 24/06/09</h4>
+        <p>the lgo zeif zef  fix #234 ef ze qzefgq zefg qzg gqzer ger gqre vqe vqer qver qzer ervqe rghg srthtyj nty jn serg t(h tyndtyjtyj e f fe qer g rg erg rgqw qz erg</p>
+      </div>
+
+      <div class="commit">
+        <div class="bug_pix"></div>
+        <h4><a href="">#243</a> by thom @ 24/06/09</h4>
+        <p>the lgo zeif zef  fix #234 ef ze qzefgq zefg qzg gqzer ger gqre vqe vqer qver qzer ervqe rghg srthtyj nty jn serg t(h tyndtyjtyj e f fe qer g rg erg rgqw qz erg</p>
+      </div>
+
+    </div>
+    <div class="clear"></div>
+  
+  </div>

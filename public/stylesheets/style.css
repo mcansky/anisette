@@ -1,0 +1,198 @@
+/* CSS for Anisette */
+
+* {
+  border: 0;
+  margin: 0;
+}
+.clear {
+  clear: both;
+}
+
+#topbanner {
+  width: 100%;
+  height: 120px;
+  border-bottom: 2px solid #000;
+}
+
+#topbanner img {
+  height: 80px;
+  margin-left: 5%;
+  margin-top: 10px;
+}
+
+#topbanner .title {
+  position: absolute;
+  left: 20%;
+  top: 15px;
+  margin-left: 20px;
+}
+
+#topbanner h1 {
+  font-family: times;
+  font-size: 24px;
+  color: #000;
+  letter-spacing: 3px;
+  font-style: italic;
+}
+
+
+#topbox {
+  width: 80%;
+  height: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  margin-top: -40px;
+  background: #FFF;
+  padding-bottom: 30px;
+}
+#topbox h2 {
+  text-align: left;
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+#topbox div.menu {
+  text-align: right;
+  margin-top: -12px;
+}
+
+#topbox ul.menu {
+  display: inline;
+  margin: 0;
+  margin-right: -2px;
+  padding: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  list-style-type: none;
+  border: 1px solid #000;
+  border-right: 10px solid #000;
+}
+#topbox li.menu {
+  display: inline;
+  margin: 0;
+  padding: 2px;
+  background: #FFF;
+  list-style-type: none;
+}
+#topbox li.menu a {
+  color: #C96333 ;
+  text-decoration: none;
+  font-weight: bold;
+}
+#topbox li.menu a:hover {
+  text-decoration: overline;
+}
+
+#topbox .project {
+  margin: 5px;
+}
+
+.project_desc ul.branches {
+  color: #C96333 ;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.project_desc lh {
+  color: #000;
+}
+.project_desc .branch {
+  display: inline;
+}
+.project_desc .branches a {
+  color: #C96333 ;
+  text-decoration: none;
+}
+.project_desc .branches a:hover {
+  text-decoration: overline;
+}
+
+div.bugs {
+  float: right;
+  padding: 3px;
+  padding-bottom: 10px;
+  margin-right: -6px;
+  border-left: 1px dashed #000;
+  width: 300px;
+}
+
+div.mask {
+  float: right;
+  height: 60px;
+  width: 60px;
+  margin-right: 100px;
+  background: transparent url("../images/mask_small.png");
+}
+
+div.bugs ul.bugs {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+div.bugs lh {
+  font-weight: bold;
+}
+div.bugs li.bug {
+  margin-left: 5px;
+}
+div.bugs li.bug a {
+  margin-left: 5px;
+  color: #C96333 ;
+  text-decoration: none;
+}
+div.bugs li.bug a:hover {
+  text-decoration: underline;
+}
+
+
+div.last_commits {
+  width: 70%;
+  margin-left: 15px;
+  margin-top: 50px;
+}
+div.last_commits h3 {
+  font-size: 14px;
+}
+
+div.last_commits div.commit {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+div.commit h4 {
+  margin-left: 10px;
+}
+div.commit p {
+  padding-left: 50px;
+  margin-top: 3px;
+  color: #a9aa8e;
+}
+div.last_commits a {
+  color: #C96333 ;
+  text-decoration: none;
+}
+
+div.commit_pix {
+  float: left;
+  background: transparent url("../images/commit_little.png");
+  width: 40px;
+  height: 40px;
+}
+div.bug_pix {
+  float: left;
+  background: transparent url("../images/detected_little.png");
+  width: 40px;
+  height: 40px;
+}
+div.fix_pix {
+  float: left;
+  background: transparent url("../images/fixed_little.png");
+  width: 40px;
+  height: 40px;
+}
+div.note_pix {
+  float: left;
+  background: transparent url("../images/note_little.png") no-repeat;
+  width: 40px;
+  height: 40px;
+}

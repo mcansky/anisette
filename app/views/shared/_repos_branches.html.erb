@@ -1,0 +1,16 @@
+    <div class="project_desc">
+      <ul class="branches">
+        <lh>Repositories :</lh>
+        <% @project.repositories.each do |r| %>
+        <li class="branch"><a href="" ><%= r.name %></a></li>        
+        <% end%>
+      </ul>
+      <ul class="branches">
+        <lh>Branches :</lh>
+        <% @project.repositories.each do |r| %>
+          <% r.branches.each do |b| %>
+          <li class="branch"><a href="" ><%= b.name %></a></li>        
+          <% end %>
+        <% end %>
+      </ul>
+    </div>

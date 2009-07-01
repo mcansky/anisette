@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Anisette</title>
+<meta name="generator" content="gnagna" /> <!-- leave this for stats -->
+
+<link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen" />
+
+<meta name="generator" content="Anisette" />
+
+</head>
+
+<body>
+
+<div id="topbanner">
+  <div class="logo"><img src="/images/logo.png" alt="Anisette"/></div>
+  <div class="title"><h1></h1></div>
+</div>
+
+<div id="topbox">
+  <h2><%= @project.name %></h2>
+  <div class="menu">
+    <ul class="menu">
+      <li class="menu"><a href="/project/" >Home</a></li>
+      <li class="menu"><a href="/commits/" >Commits</a></li>
+      <li class="menu"><a href="/bugs/" >Bugs</a></li>
+      <li class="menu"><a href="/bugs/new" >New Bug</a></li>
+      <li class="menu"><a href="" >Settings</a></li>
+    </ul>
+  </div>
+
+<%= yield %>
+
+</div>
+
+</body>
+</html>
+
