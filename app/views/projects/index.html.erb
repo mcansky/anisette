@@ -8,7 +8,8 @@
         <div class="commit">
           <div class="project_pix"></div>
           <h4><a href="/projects/get/<%= p.id %>"><%= p.name %></a></h4>
-          <p></p>
+          <div class="sub"><%= p.stats %></div>
+          <p><%= p.desc %></p>
         </div>
       <% end %>
 
