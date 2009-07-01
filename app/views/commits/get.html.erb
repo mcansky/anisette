@@ -1,0 +1,16 @@
+
+    <%= render :partial => "shared/repos_branches" %>
+    <%= render :partial => "shared/bugs" %>
+
+    <div class="last_commits">
+
+      <div class="commit">
+        <div class="commit_pix"></div>
+        <h4><%= @commit.short_sha %><%= @commit.author_name %> @ <%= @commit.commited_time %> on branch <a href="branch"><%= @commit.branch.name %></a></h4>
+        <p><%= @commit.log %></p>
+      </div>
+
+    </div>
+    <div class="clear"></div>
+  
+  </div>
