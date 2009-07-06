@@ -11,7 +11,7 @@
       <% else %>
         <% active_repo = @project.repositories.find_by_name('origin') %>
       <% end %>
-      <div class="sub">active : <%= active_repo.path %> (<%= active_repo.name %>)</div>
+      <div class="sub">active : <%= active_repo.path %> (<%= active_repo.name %>) , <%= active_repo.commits.count %> commits</div>
 
       <ul class="branches">
         <lh>Branches :</lh>
