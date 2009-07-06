@@ -9,7 +9,7 @@
         <ul class="bugs">
           <lh>Bugs</lh>
           <% active_repo.bugs.last(30).each do |e| %>
-            <% if e.state == "fixed" %>
+            <% if e.fixed? %>
               <li class="fix">
             <% else %>
               <li class="bug">

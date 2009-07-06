@@ -3,6 +3,10 @@
 * {
   border: 0;
   margin: 0;
+  font-family: courier;
+}
+p {
+  font-size: 12px;
 }
 .clear {
   clear: both;

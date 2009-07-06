@@ -12,7 +12,7 @@ class Bug < ActiveRecord::Base
   end
 
   def fixed?
-    if self.fixing_commit != 0
+    if self.fix_id != 0
       return true
     end
     return false
