@@ -19,6 +19,7 @@ namespace :git do
               a_commit = AnisetteCommit.new(:sha => c.id,
                                           :log => c.message,
                                           :author_name => c.author.name,
+                                          :created_at => c.committed_date,
                                           :commited_time => c.committed_date)
               a_branch.commits << a_commit
               a_commit.save
