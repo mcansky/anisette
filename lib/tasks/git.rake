@@ -38,7 +38,7 @@ namespace :git do
               end
               # adding bugs in the commit fixed array
               bugs_ids.each do |b_id|
-                if ((b = Bug.find(b_id)) && !b.fixed?)
+                if ((b = a_repository.bugs.find(:all, :conditions => "local_id = #{b_id}")) && !b.fixed?)
                   a_commit.fixed_bugs << b
                   a_commit.save
                 end
@@ -52,7 +52,7 @@ namespace :git do
               #  refs_ids << Regexp.last_match[2]
               #end
               #bugs_ids.each do |b_id|
-              #  if (b = Bug.find(b_id))
+              #  if (b = a_repository.bugs.find(:all, :conditions => "local_id = #{b_id}")
               #    a_commit.bugs_refs << b
               #    a_commit.save
               #  end
