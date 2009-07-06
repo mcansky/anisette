@@ -1,9 +1,13 @@
       <div class="commit">
         <% if @e.fixed? %>
           <div class="fix_pix"></div>
+          <h4><a href="/bugs/show/<%= @e.id %>" class="fix">#<%= @e.local_id %></a> by <%= @e.author.login %> @ <%= @e.created_at.strftime("%x") %>
+            <span class="sub">fixed by <a href="/commits/get/<%= @e.fixing_commit.id %>"><%= @e.fixing_commit.short_sha %></span>
+          </h4>
+          <p><%= @e.short_desc %></p>
         <% else %>
           <div class="bug_pix"></div>
+          <h4><a href="/bugs/show/<%= @e.id %>">#<%= @e.local_id %></a> by <%= @e.author.login %> @ <%= @e.created_at.strftime("%x") %></h4>
+          <p><%= @e.short_desc %></p>
         <% end %>
-        <h4><a href="/bugs/show/<%= @e.id %>">#<%= @e.local_id %></a> by <%= @e.author.login %> @ <%= @e.created_at.strftime("%x") %></h4>
-        <p><%= @e.short_desc %></p>
       </div>
