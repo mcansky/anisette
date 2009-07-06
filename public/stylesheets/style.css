@@ -3,7 +3,7 @@
 * {
   border: 0;
   margin: 0;
-  font-family: courier;
+  font-family: serif;
 }
 p {
   font-size: 12px;
@@ -65,14 +65,14 @@ p {
 #topbox ul.menu {
   display: inline;
   margin: 0;
-  margin-right: -2px;
+  margin-right: 0px;
   padding: 0;
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
+  padding-right: 5px;
   list-style-type: none;
-  border: 1px solid #000;
-  border-right: 10px solid #000;
+  border-bottom: 1px solid #000;
 }
 #topbox li.menu {
   display: inline;
@@ -80,6 +80,7 @@ p {
   padding: 2px;
   background: #FFF;
   list-style-type: none;
+  font-size: 12px;
 }
 #topbox li.menu a {
   color: #C96333 ;
@@ -122,6 +123,11 @@ p {
 .sub {
   margin-left: 50px;
   color: #a9aa8e;
+  font-size: 10px;
+}
+span.fixed {
+  margin-left: 50px;
+  color: #cc0000;
   font-size: 10px;
 }
 
@@ -190,6 +196,7 @@ div.last_commits div.commit {
   margin-left: 10px;
 }
 div.commit h4 {
+  font-size: 12px;
   margin-left: 10px;
 }
 div.commit p {

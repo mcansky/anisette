@@ -3,16 +3,17 @@ include Grit
 
 namespace :git do
   desc "check git dep for new commits"
-  task(:pull, [:project_name] => :environment) do
-    args.with_defaults(:project_name => 'all')
+  task(:pull => :environment) do
+    projects = []
+    project_name = ENV['PNAME']
     case
-      when :project_name == 'all'
+      when project_name == 'all'
         projects = Project.find(:all)
       else
-        projects = []
-        projects << Project.find_by_name(:project_name)
+        projects << Project.find_by_name(project_name)
     end
     projects.each do |a_project|
+      printf("Treating #{a_project.name}\n")
       a_project.repositories.each do |a_repository|
         repo = Repo.new(a_repository.path)
         repo.branches.each do |b|
