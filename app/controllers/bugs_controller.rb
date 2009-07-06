@@ -6,7 +6,7 @@ class BugsController < ApplicationController
       @project = Project.find(session[:project_id])
     else
         flash[:notice] = "You need to login"
-        redirect_to "/login"
+        redirect_to "/login" and return false
     end
     render :layout => 'project'
   end

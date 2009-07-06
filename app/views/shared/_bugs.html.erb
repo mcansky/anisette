@@ -8,7 +8,7 @@
       <div class="active_bugs">
         <ul class="bugs">
           <lh>Bugs</lh>
-          <% active_repo.bugs.last(30).each do |e| %>
+          <% active_repo.bugs.last(15).reverse.each do |e| %>
             <% if e.fixed? %>
               <li class="fix">
             <% else %>
