@@ -30,9 +30,32 @@ namespace :git do
               # check for fixes in commit message
               bugs_ids = []
               a_msg = c.message
-              pattern = /\s(fix|fixes|close)\s#([0-9]+)/
+              # parsing for bug fixes
+              pattern = /\s*(fix|fixes|close)\s#([0-9]+)/
+              while ( pattern =~ a_msg ) do
+                a_msg.slice!(Regexp.last_match[0])
+                bugs_ids << Regexp.last_match[2]
+              end
+              # adding bugs in the commit fixed array
+              bugs_ids.each do |b_id|
+                if ((b = Bug.find(b_id)) && !b.fixed?)
+                  a_commit.fixed_bugs << b
+                  a_commit.save
+                end
+              end
+              # parsing for bug refs (for future implementation)
+              #refs_ids = []
+              #a_msg = c.message
+              #pattern = /\s*(ref|refs|link)\s#([0-9]+)/
               #while ( pattern =~ a_msg ) do
-                #bugs_ids << a_msg.slice!(Regexp.last_match[3])
+              #  a_msg.slice!(Regexp.last_match[0])
+              #  refs_ids << Regexp.last_match[2]
+              #end
+              #bugs_ids.each do |b_id|
+              #  if (b = Bug.find(b_id))
+              #    a_commit.bugs_refs << b
+              #    a_commit.save
+              #  end
               #end
             end
           end

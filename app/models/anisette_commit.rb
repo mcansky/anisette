@@ -1,6 +1,7 @@
 class AnisetteCommit < ActiveRecord::Base
   belongs_to :branch
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"
+  has_many :fixed_bugs, :class_name => "Bug", :foreign_key => "fix_id"
 
   def short_sha
     sha_size = self.sha.size
