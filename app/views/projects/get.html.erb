@@ -11,8 +11,12 @@
       <div class="last_commits">
 
           <h3>Lately ...</h3>
-          <% active_repo.commits.last(10).reverse.each do |@e| %>
-            <%= render :partial => "shared/commit" %>
+          <% @events.each do |@e| %>
+            <% if @e.is_a? AnisetteCommit %>
+              <%= render :partial => "shared/commit" %>
+            <% elsif @e.is_a? Bug %>
+              <%= render :partial => "shared/bug" %>
+            <% end %>
           <% end %>
 
         <!-- <div class="commit">

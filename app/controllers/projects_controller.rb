@@ -30,8 +30,14 @@ class ProjectsController < ApplicationController
   def get
     @project = Project.find(params[:id])
     session[:project_id] = @project.id
-    if ((not session[:repository_id]) && (@project.repositories.size > 0))
-      session[:repository_id] = @project.repositories.find_by_name('origin')
+    if (@project.repositories.size > 0)
+      active_repo = @project.repositories.find_by_name('origin')
+      session[:repository_id] = active_repo.id
+      events = []
+      active_repo.commits.last(10).reverse.each { |c| events << c }
+      active_repo.bugs.last(10).reverse.each { |b| events << b }
+      events.sort! { |a,b| a.created_at <=> b.created_at }
+      @events = events.reverse
     else
       session[:repository_id] = nil
     end

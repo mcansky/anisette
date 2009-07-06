@@ -5,8 +5,12 @@
     <div class="last_commits">
 
       <div class="commit">
-        <div class="bug_pix"></div>
-        <h4>#<%= @bug.local_id %><%= @bug.title %><%= @bug.author.login %> @ <%= @bug.created_at %> on repo <a href="branch"><%= @bug.repository.name %></a></h4>
+        <% if @bug.fixed? %>
+          <div class="fix_pix"></div>
+        <% else %>
+          <div class="bug_pix"></div>
+        <% end %>
+        <h4>#<%= @bug.local_id %> <%= @bug.title %> <%= @bug.author.login %> @ <%= @bug.created_at %> on repo <a href="branch"><%= @bug.repository.name %></a></h4>
         <p><%= @bug.desc %></p>
       </div>
 

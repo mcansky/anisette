@@ -38,9 +38,12 @@ namespace :git do
               end
               # adding bugs in the commit fixed array
               bugs_ids.each do |b_id|
-                if ((b = a_repository.bugs.find(:all, :conditions => "local_id = #{b_id}")) && !b.fixed?)
-                  a_commit.fixed_bugs << b
-                  a_commit.save
+                if (b = a_repository.bugs.find(:all, :conditions => "local_id = #{b_id}"))
+                  a_bug = b.first
+                  if !(a_bug.fixed?)
+                    a_commit.fixed_bugs << a_bug
+                    a_commit.save
+                  end
                 end
               end
               # parsing for bug refs (for future implementation)
