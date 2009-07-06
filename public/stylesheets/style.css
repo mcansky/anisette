@@ -240,6 +240,19 @@ div.note_pix {
   height: 40px;
 }
 
+div.diff {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+div.diff p {
+  color: #a9aa8e;
+  margin-left: 10px;
+}
+div.diff h4 {
+  font-size: 12px;
+}
+
 input {
   color: #C96333 ;
   border: 1px solid #a9aa8e;

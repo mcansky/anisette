@@ -11,6 +11,19 @@ class AnisetteCommit < ActiveRecord::Base
     return short_sha
   end
 
+  def get_diffs
+    grit_repo = Repo.new(self.branch.repository.path)
+    found = false
+    seen_all = false
+    grit_commit = nil
+    grit_commit = grit_repo.commits(self.branch.name, 1000).find { |c| c.id == self.sha }
+    if (!grit_commit)
+      return []
+    else
+      return grit_commit.diffs
+    end
+  end
+
   def short_log
     if (self.log.size < 42)
       return self.log

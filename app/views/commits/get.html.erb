@@ -10,6 +10,15 @@
         <p><%= @commit.log %></p>
       </div>
 
+    <div class="diff">
+      <% @diffs.each do |d| %>
+        <div class="diff">
+          <h4><%= d.b_path %></h4>
+          <pre><code><% d.diff.gsub("\n","<br />") %></code></pre>
+        </div>
+      <% end %>
+    </div>
+
     </div>
     <div class="clear"></div>
   
