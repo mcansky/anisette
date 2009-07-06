@@ -202,6 +202,10 @@ div.last_commits a {
   color: #C96333 ;
   text-decoration: none;
 }
+div.last_commits a.fix {
+  color: #C96333 ;
+  text-decoration: line-through;
+}
 
 div.commit_pix {
   float: left;
