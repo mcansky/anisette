@@ -11,10 +11,21 @@
       </div>
 
     <div class="diff">
+      <% i = 0 %>
       <% @diffs.each do |d| %>
         <div class="diff">
-          <h4><%= d.b_path %></h4>
-          <pre><code><% d.diff.gsub("\n","<br />") %></code></pre>
+          <h4><%= link_to_function (d.b_path,  "Element.toggle('diff#{d.id}')") %></h4>
+
+          <div id="diff<%= d.id %>" style="display:none;">
+          <% if d.b_path.split('.').last == "rb" %>
+            <% format = :ruby %>
+          <% elsif d.b_path.split('.').last == "erb" %>
+            <% format = :rhtml %>
+          <% elsif d.b_path.split('.').last == "css" %>
+            <% format = :css %>
+          <% end %>
+          <%= CodeRay.scan(d.diff, format).div(:css => :class) %>
+          </div>
         </div>
       <% end %>
     </div>

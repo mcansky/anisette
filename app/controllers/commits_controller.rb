@@ -1,9 +1,8 @@
 require 'grit'
 include Grit
+require 'coderay'
 
 class CommitsController < ApplicationController
-
-
 
   def get
     @commit = AnisetteCommit.find(params[:id])
@@ -12,4 +11,5 @@ class CommitsController < ApplicationController
     @diffs = @commit.get_diffs
     render :layout => 'project'
   end
+
 end
