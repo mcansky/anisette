@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.find(:all)
+    session[:repository_id] = nil
   end
 
   def get

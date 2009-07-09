@@ -13,8 +13,6 @@ class AnisetteCommit < ActiveRecord::Base
 
   def get_diffs
     grit_repo = Repo.new(self.branch.repository.path)
-    found = false
-    seen_all = false
     grit_commit = nil
     grit_commit = grit_repo.commits(self.branch.name, 1000).find { |c| c.id == self.sha }
     if (!grit_commit)
@@ -22,6 +20,17 @@ class AnisetteCommit < ActiveRecord::Base
     else
       return grit_commit.diffs
     end
+  end
+
+  def diffs
+    return self.get_diffs
+  end
+
+  def stats
+    grit_repo = Repo.new(self.branch.repository.path)
+    grit_commit = nil
+    grit_commit = grit_repo.commits(self.branch.name, 1000).find { |c| c.id == self.sha }
+    return grit_commit.stats
   end
 
   def short_log

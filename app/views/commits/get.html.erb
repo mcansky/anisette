@@ -6,7 +6,8 @@
 
       <div class="commit">
         <div class="commit_pix"></div>
-        <h4><%= @commit.sha %><%= @commit.author.name %> @ <%= @commit.commited_time.strftime("%x %X") %> on branch <a href="branch"><%= @commit.branch.name %></a></h4>
+        <% stats = quick_stats(@commit.stats.files) %>
+        <h4><%= @commit.sha %><%= @commit.author.name %> @ <%= @commit.commited_time.strftime("%x %X") %> on branch <a href="branch"><%= @commit.branch.name %></a></h4><div class="sub"><%= stats['files'] %> files, <%= stats['adds'] %> adds, <%= stats['subs'] %> subs, </div>
         <p><%= @commit.log %></p>
       </div>
 
@@ -14,7 +15,7 @@
       <% i = 0 %>
       <% @diffs.each do |d| %>
         <div class="diff">
-          <h4><%= link_to_function (d.b_path,  "Element.toggle('diff#{d.id}')") %></h4>
+          <h4><%= link_to_function (d.b_path,  "Element.toggle('diff#{d.id}')") %> <span class="sub">(<%= @commit.stats.files[i][1] %> adds, <%= @commit.stats.files[i][2] %> subs)</span></h4>
 
           <div id="diff<%= d.id %>" style="display:none;">
           <% if d.b_path.split('.').last == "rb" %>
@@ -27,6 +28,7 @@
           <%= CodeRay.scan(d.diff, format).div(:css => :class) %>
           </div>
         </div>
+        <% i+= 1 %>
       <% end %>
     </div>
 
