@@ -47,7 +47,7 @@ namespace :git do
               end
               # adding bugs in the commit fixed array
               bugs_ids.each do |b_id|
-                if (b = a_repository.bugs.find(:all, :conditions => "local_id = #{b_id}"))
+                if ((b = a_repository.bugs.find(:all, :conditions => "local_id = #{b_id}")) && b.count > 0)
                   a_bug = b.first
                   if !(a_bug.fixed?)
                     a_commit.fixed_bugs << a_bug
@@ -79,7 +79,14 @@ namespace :git do
 
   desc "Purge commits DB !!"
   task(:purge => :environment) do
-    projects = Project.find(:all)
+    projects = []
+    project_name = ENV['PNAME']
+    case
+      when project_name == 'all'
+        projects = Project.find(:all)
+      else
+        projects << Project.find_by_name(project_name)
+    end
     projects.each do |a_project|
       a_project.repositories.each do |r|
         r.branches.each do |b|
