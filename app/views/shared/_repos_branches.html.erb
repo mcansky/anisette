@@ -16,8 +16,9 @@
       <ul class="branches">
         <lh>Branches :</lh>
         <% @project.repositories.each do |r| %>
+          <li class="branch"><%= link_to "All", :controller => "projects", :action => "get", :id => @project.id %></li>
           <% r.branches.each do |b| %>
-          <li class="branch"><a href="/projects/get/<%= @project.id %>"><%= b.name %></a></li>        
+          <li class="branch"><%= link_to_remote b.name, :update => "events", :url => { :action => "branch", :id => b.id } %></li>        
           <% end %>
         <% end %>
       </ul>

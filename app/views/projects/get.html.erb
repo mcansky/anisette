@@ -12,13 +12,9 @@
       <div class="last_commits">
 
           <h3>Lately ...</h3>
-          <% @events.each do |@e| %>
-            <% if @e.is_a? AnisetteCommit %>
-              <%= render :partial => "shared/commit" %>
-            <% elsif @e.is_a? Bug %>
-              <%= render :partial => "shared/bug" %>
-            <% end %>
-          <% end %>
+          <div id="events">
+            <%= render :partial => "lately" %>
+          </div>
 
         <!-- <div class="commit">
           <div class="fix_pix"></div>

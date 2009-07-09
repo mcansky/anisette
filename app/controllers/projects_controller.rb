@@ -31,7 +31,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     session[:project_id] = @project.id
     if (@project.repositories.size > 0)
-      active_repo = @project.repositories.find_by_name('origin')
+      if (session[:repository_id])
+        active_repo = @project.repositories.find(session[:repository_id])
+      else
+        active_repo = @project.repositories.find_by_name('origin')
+      end
       session[:repository_id] = active_repo.id
       events = []
       active_repo.commits.last(10).reverse.each { |c| events << c }
@@ -43,4 +47,23 @@ class ProjectsController < ApplicationController
     end
     render :layout => 'project'
   end
+
+  def branch
+    @project = Project.find(session[:project_id])
+    branch = Branch.find(params[:id])
+    if (session[:repository_id])
+      active_repo = @project.repositories.find(session[:repository_id])
+    else
+      active_repo = @project.repositories.find_by_name('origin')
+    end
+    events = []
+    branch.commits.last(10).reverse.each { |c| events << c }
+    branch.repository.bugs.last(10).reverse.each { |b| events << b }
+    events.sort! { |a,b| a.created_at <=> b.created_at }
+    @events = events.reverse
+    render :partial => 'lately'
+  end
+
+
+
 end
