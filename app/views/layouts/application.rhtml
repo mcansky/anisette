@@ -17,6 +17,7 @@
 </head>
 
 <body>
+ <%= render :partial => "shared/user_menu" %>
 
 <div id="topbanner">
   <div class="logo"><img src="/images/logo.png" alt="Anisette"/></div>
@@ -24,18 +25,15 @@
 </div>
 
 <div id="topbox">
-  <h2>Your HOUSE</h2>
+	<% if (current_user) %>
+		<h2>Howdy <%= current_user.login %> !</h2>
+	<% else %>
+		<h2>Your HOUSE</h2>
+	<% end %>
   <div class="menu">
     <ul class="menu">
       <li class="menu"><a href="/projects/" >Home</a></li>
       <li class="menu"><a href="/projects/new" >New Project</a></li>
-			<% if (current_user) %>
-				<li class="menu"><%= link_to "Edit profile", edit_user_path(:current) %></li>
-        <li class="menu"><%= link_to "Logout", logout_path %></li>
-      <% else %>
-        <li class="menu"><%= link_to "Login", login_path %></li>
-				<li class="menu"><%= link_to "Register", new_user_path %></li>
-			<% end %>
     </ul>
   </div>
 <%= yield %>

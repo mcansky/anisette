@@ -1,6 +1,8 @@
 
   <div class="project">
- <%= flash[:notice] %>
+	<% if flash[:notice] %>
+	<div class="flash"><%= flash[:notice] %></div>
+	<% end %>
     <div class="last_commits">
       <h3>Projects</h3>
 

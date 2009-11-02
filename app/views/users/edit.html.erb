@@ -2,13 +2,26 @@
     <div class="last_commits">
     <h4>Edit My Account</h4>
 
-    <% form_for @user, :url => account_path do |f| %>
-      <%= f.error_messages %>
-      <%= render :partial => "form", :object => f %>
-      <%= f.submit "Update" %>
-    <% end %>
-
-    <br /><%= link_to "My Profile", account_path %>
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
 
     </div>
   </div>
