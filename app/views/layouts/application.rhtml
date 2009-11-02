@@ -29,7 +29,13 @@
     <ul class="menu">
       <li class="menu"><a href="/projects/" >Home</a></li>
       <li class="menu"><a href="/projects/new" >New Project</a></li>
-      <li class="menu"><a href="" >Settings</a></li>
+			<% if (logged_in?) %>
+				<li class="menu"><a href="/users/edit/<%= @user.id %>" >Settings</a></li>
+        <li class="menu"><a href="/logout" >Logout</a></li>
+      <% else %>
+        <li class="menu"><a href="/login" >Login</a></li>
+				<li class="menu"><a href="/signup" >Register</a></li>
+			<% end %>
     </ul>
   </div>
 
