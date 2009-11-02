@@ -29,16 +29,15 @@
     <ul class="menu">
       <li class="menu"><a href="/projects/" >Home</a></li>
       <li class="menu"><a href="/projects/new" >New Project</a></li>
-			<% if (logged_in?) %>
-				<li class="menu"><a href="/users/edit/<%= @user.id %>" >Settings</a></li>
-        <li class="menu"><a href="/logout" >Logout</a></li>
+			<% if (current_user) %>
+				<li class="menu"><%= link_to "Edit profile", edit_user_path(:current) %></li>
+        <li class="menu"><%= link_to "Logout", logout_path %></li>
       <% else %>
-        <li class="menu"><a href="/login" >Login</a></li>
-				<li class="menu"><a href="/signup" >Register</a></li>
+        <li class="menu"><%= link_to "Login", login_path %></li>
+				<li class="menu"><%= link_to "Register", new_user_path %></li>
 			<% end %>
     </ul>
   </div>
-
 <%= yield %>
 
 </div>
