@@ -1,4 +1,4 @@
-          <% @events.each do |@e| %>
+					<% @events.each do |@e| %>
             <% if @e.is_a? AnisetteCommit %>
               <%= render :partial => "shared/commit" %>
             <% elsif @e.is_a? Bug %>
