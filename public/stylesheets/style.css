@@ -88,7 +88,7 @@ p {
   font-size: 12px;
 }
 #topbox li.menu a {
-  color: #C96333 ;
+  color: #456 ;
   text-decoration: none;
   font-weight: bold;
 }
@@ -101,7 +101,7 @@ p {
 }
 
 .project_desc ul.branches {
-  color: #C96333 ;
+  color: #456 ;
   margin-left: 20px;
   margin-top: 10px;
 }
@@ -116,7 +116,7 @@ p {
 }
 
 .project_desc .branches a {
-  color: #C96333 ;
+  color: #456 ;
   text-decoration: none;
   font-size: 13px;
 }
@@ -168,7 +168,7 @@ div.bugs li.fix {
 }
 div.bugs li.fix a {
   margin-left: 5px;
-  color: #C96333 ;
+  color: #456 ;
   text-decoration: line-through;
 }
 div.bugs li.fix a:hover { 
@@ -177,7 +177,7 @@ div.bugs li.fix a:hover {
 
 div.bugs li.bug a {
   margin-left: 5px;
-  color: #C96333 ;
+  color: #456 ;
   text-decoration: none;
 }
 div.bugs li.bug a:hover {
@@ -211,11 +211,11 @@ div.commit p {
   color: #a9aa8e;
 }
 div.last_commits a {
-  color: #C96333 ;
+  color: #456 ;
   text-decoration: none;
 }
 div.last_commits a.fix {
-  color: #C96333 ;
+  color: #456 ;
   text-decoration: line-through;
 }
 
@@ -260,7 +260,7 @@ div.diff h4 {
 
 
 input {
-  color: #C96333 ;
+  color: #456 ;
   border: 1px solid #a9aa8e;
   margin: 5px;
 }
@@ -268,7 +268,7 @@ form {
   margin: 5px;
 }
 textarea {
-  color: #C96333 ;
+  color: #456 ;
   border: 1px solid #a9aa8e;
   margin: 5px;
 }

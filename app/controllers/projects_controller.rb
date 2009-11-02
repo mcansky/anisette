@@ -45,6 +45,7 @@ class ProjectsController < ApplicationController
       @events = events.reverse
     else
       session[:repository_id] = nil
+			@events = []
     end
     render :layout => 'project'
   end

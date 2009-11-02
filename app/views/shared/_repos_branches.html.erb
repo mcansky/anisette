@@ -1,4 +1,6 @@
-    <div class="project_desc">
+	<% if (session[:repository_id] != nil) %>
+
+		<div class="project_desc">
       <ul class="branches">
         <lh>Repositories :</lh>
         <% @project.repositories.each do |r| %>
@@ -25,3 +27,8 @@
         <% end %>
       </ul>
     </div>
+	<% else %>
+	<div class="project_desc">
+		<p><a href="/repositories/new" alt="Add repository" title="Add repository" ><img src="/images/add_repo.png" /></a></p>
+	</div>
+	<% end %>
