@@ -9,6 +9,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Successfully logged in."
       redirect_to root_url
     else
+			flash[:error] = "FRACK"
       render :action => 'new'
     end
   end
