@@ -14,19 +14,9 @@
           <div id="events">
             <%= render :partial => "lately" %>
           </div>
-
-        <!-- <div class="commit">
-          <div class="fix_pix"></div>
-          <h4><a href="">#243</a> by thom @ 24/06/09</a></h4>
-          <p>the lgo zeif zef  fix #234 ef ze qzefgq zefg qzg gqzer ger gqre vqe vqer qver qzer ervqe rghg srthtyj nty jn serg t(h tyndtyjtyj e f fe qer g rg erg rgqw qz erg</p>
-        </div>
-
-        <div class="commit">
-          <div class="note_pix"></div>
-          <h4>On <a href="">#243</a> by thom @ 24/06/09</h4>
-          <p>the lgo zeif zef  fix #234 ef ze qzefgq zefg qzg gqzer ger gqre vqe vqer qver qzer ervqe rghg srthtyj nty jn serg t(h tyndtyjtyj e f fe qer g rg erg rgqw qz erg</p>
-        </div>-->
-
+					<div class="paginate">
+						<%= will_paginate @page_results %>
+					</div>
       </div>
     <div class="clear"></div>
   

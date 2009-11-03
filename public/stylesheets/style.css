@@ -313,3 +313,9 @@ textarea {
   list-style-type: none;
 	color: #456;
 }
+
+.paginate {
+	font-size: 12px;
+	margin-top: 20px;
+	margin-left: 20px;
+}

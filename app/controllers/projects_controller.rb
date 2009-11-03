@@ -39,10 +39,21 @@ class ProjectsController < ApplicationController
       end
       session[:repository_id] = active_repo.id
       events = []
-      active_repo.commits.last(10).reverse.each { |c| events << c }
-      active_repo.bugs.last(10).reverse.each { |b| events << b }
+      active_repo.commits.reverse.each { |c| events << c }
+      active_repo.bugs.reverse.each { |b| events << b }
       events.sort! { |a,b| a.created_at <=> b.created_at }
       @events = events.reverse
+			# pagination
+			a_page = 1
+			a_ppage = 10
+			if (params[:page] != nil)
+				a_page = params[:page]
+			end
+			if (params[:per_page] != nil)
+				a_ppage = params[:per_page] || 10
+			end
+			options = {:page => a_page, :per_page => a_ppage}
+			@page_results = @events.paginate(options)
     else
       session[:repository_id] = nil
 			@events = []
