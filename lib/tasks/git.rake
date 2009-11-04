@@ -71,18 +71,8 @@ namespace :git do
 		end
     projects.each do |a_project|
       printf ("Treating #{a_project.name} : ")
-      a_project.repositories.each do |a_repository|
-        repo = Repo.new(a_repository.path)
-        repo.branches.each do |b|
-					a_branch = a_repository.branches.find_by_name(b.name)
-					if( a_branch == nil)
-						a_branch = Branch.new(:name => b.name)
-					end
-					a_repository.branches << a_branch
-					a_branch.update
-					a_repository.save
-        end
-      end
+			a_project.update
+			a_project.save
 			printf ("ok\n")
     end
   end
@@ -90,22 +80,16 @@ namespace :git do
   desc "Purge commits DB !!"
   task(:purge => :environment) do
     projects = []
-    project_name = ENV['PNAME']
-    case
-      when project_name == 'all'
-        projects = Project.find(:all)
-      else
-        projects << Project.find_by_name(project_name)
-    end
+    if (ENV['PNAME'])
+			project_name = ENV['PNAME']
+			projects << Project.find_by_name(project_name)
+		else
+			projects = Project.find(:all)
+		end
     projects.each do |a_project|
 			printf ("Purging #{a_project.name} : ")
       a_project.repositories.each do |r|
-        r.branches.each do |b|
-          b.commits.each do |c|
-            c.destroy
-          end
-          b.destroy
-        end
+				r.purge
       end
 			printf ("ok\n")
     end
