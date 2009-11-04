@@ -25,4 +25,38 @@ class RepositoriesController < ApplicationController
       render :action => 'new'
     end
   end
+	
+	def update
+		if (not current_user)
+			redirect_to "/login"
+		end
+		@repository = Repository.find(params[:id])
+		@repository.update
+		session[:repository_id] = @repository.id
+		events = []
+		@repository.commits.reverse.each { |c| events << c }
+		@repository.bugs.reverse.each { |b| events << b }
+		events.sort! { |a,b| a.created_at <=> b.created_at }
+		@events = events.reverse
+		# pagination
+		a_page = 1
+		a_ppage = 10
+		if (params[:page] != nil)
+			a_page = params[:page]
+		end
+		if (params[:per_page] != nil)
+			a_ppage = params[:per_page] || 10
+		end
+		options = {:page => a_page, :per_page => a_ppage}
+		@page_results = @events.paginate(options)
+		render :partial => 'projects/lately'
+	end
+
+	def purge
+		if (not current_user)
+			redirect_to "/login"
+		end
+		Repository.find(params[:id]).purge
+		render :text => "Empty"
+	end
 end
