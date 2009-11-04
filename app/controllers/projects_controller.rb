@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def new
-    if (logged_in?)
+    if (current_user)
       @project = Project.new
     else
         flash[:notice] = "You need to login"
@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     current_user.projects << @project
     success = @project && @project.save
     if success && @project.errors.empty?
-      redirect_back_or_default("/projects/get/#{@project.id}")
+      redirect_to ("/projects/get/#{@project.id}")
       flash[:notice] = "new Project added !"
     else
       flash[:error]  = "We couldn't set up the project, sorry.  Please try again, or contact an admin (link is above)."
@@ -57,6 +57,7 @@ class ProjectsController < ApplicationController
     else
       session[:repository_id] = nil
 			@events = []
+			@page_results = []
     end
     render :layout => 'project'
   end

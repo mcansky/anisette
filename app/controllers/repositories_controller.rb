@@ -1,6 +1,6 @@
 class RepositoriesController < ApplicationController
   def new
-    if (logged_in?)
+    if (current_user)
       @repository = Repository.new
     else
         flash[:notice] = "You need to login"
@@ -9,7 +9,7 @@ class RepositoriesController < ApplicationController
   end
 
   def create
-    if (not logged_in?)
+    if (not current_user)
       redirect_to "/login"
     end
     @repository = Repository.new(params[:repository])
@@ -18,7 +18,7 @@ class RepositoriesController < ApplicationController
     success = @repository && @repository.save
     if success && @repository.errors.empty?
       current_user.repositories << @repository
-      redirect_back_or_default("/projects/get/#{@repository.project_id}")
+      redirect_to("/projects/get/#{@repository.project_id}")
       flash[:notice] = "new Repository added !"
     else
       flash[:error]  = "We couldn't set up the repository, sorry.  Please try again, or contact an admin (link is above)."

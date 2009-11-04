@@ -6,7 +6,7 @@
     <%= error_messages_for :repository %>
     <% form_for :repository, @repository, :url => { :action => "create" } do |f| -%>
     <p><%= label_tag 'name' %> (if it's the first one for this project, then please use 'origin')<br/>
-    <%= f.text_field :name %></p>
+    <%= f.text_field :name, :value => "origin" %></p>
 
     <p><%= label_tag 'path' %> (please check the validity of it !)<br/>
     <%= f.text_field :path %></p>

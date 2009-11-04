@@ -14,9 +14,11 @@
           <div id="events">
             <%= render :partial => "lately" %>
           </div>
+					<% if !@project.repositories.empty? %>
 					<div class="paginate">
 						<%= will_paginate @page_results %>
 					</div>
+					<% end %>
       </div>
     <div class="clear"></div>
   
