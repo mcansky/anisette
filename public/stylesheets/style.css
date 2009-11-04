@@ -319,3 +319,11 @@ textarea {
 	margin-top: 20px;
 	margin-left: 20px;
 }
+
+.stats {
+	margin: 20px;
+}
+.stats h3 {
+	font-size: 12px;
+	margin-bottom: 5px;
+}
