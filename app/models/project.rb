@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
     end
     stats = "#{c_count} commits in #{b_count} branches in #{r_count} repositories"
   end
-	
+
 	def update
 		self.repositories.each { |r| r.update }
 	end

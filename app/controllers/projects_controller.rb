@@ -42,17 +42,6 @@ class ProjectsController < ApplicationController
 				active_repo = @project.repositories[0]
 			end
 			session[:repository_id] = active_repo.id
-			
-			# stats
-			@commits = active_repo.commits
-			@today_stats = { 'files' => 0, 'subs' => 0, 'adds' => 0 }
-			@commits.find(:all, :conditions => ['commited_time > ?', 1.day.ago]).each do |c|
-				stats = quick_stats(c.stats.files)
-				@today_stats['files'] += stats['files']
-				@today_stats['subs'] += stats['subs']
-				@today_stats['adds'] += stats['adds']
-			end
-			
 			events = []
       active_repo.commits.reverse.each { |c| events << c }
       active_repo.bugs.reverse.each { |b| events << b }
@@ -104,18 +93,5 @@ class ProjectsController < ApplicationController
     render :partial => 'lately'
   end
 
-	private
-	def quick_stats(commit_files)
-    stats = Hash.new()
-    stats['adds'] = 0
-    stats['subs'] = 0
-    stats['files'] = 0
-    stats['files'] = commit_files.count
-    commit_files.each do |f|
-      stats['adds'] += f[1]
-      stats['subs'] += f[2]
-    end
-    return stats
-  end
 
 end

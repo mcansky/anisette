@@ -327,3 +327,7 @@ textarea {
 	font-size: 12px;
 	margin-bottom: 5px;
 }
+
+.stats p {
+	margin-left: 10px;
+}
