@@ -51,7 +51,7 @@ def treat_branch(git_repo, a_repository, a_branch)
 				:created_at => c.committed_date,
 				:commited_time => c.committed_date)
 			puts "created commit #{i}"
-			a_repository.add_event(c)
+			a_branch.add_event(c)
 			#a_branch.commits << treat_commit(a_repository, a_branch, a_commit)
 		end
 		i+=1
@@ -78,7 +78,8 @@ namespace :git do
 					if( a_branch == nil)
 						a_branch = Branch.new(:name => b.name)
 					end
-					a_repository.branches << treat_branch(repo, a_repository, a_branch)
+					a_repository.branches << a_branch
+					a_branch.update
 					a_repository.save
         end
       end
