@@ -43,13 +43,14 @@ class AnisetteCommit < ActiveRecord::Base
 
   def check_and_set_author
     if (self.author == nil)
-      u_name = ''
+      u_name = nil
       begin
         u_name = User.find_by_login(self.author_name)
         u_name.commits << self
         return true
       rescue
-        u_name = ''
+        u_name = User.find(:all).first
+				u_name.commits << self
       end
       return false
     end

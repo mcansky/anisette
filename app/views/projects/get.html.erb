@@ -8,6 +8,7 @@
     <% else %>
       <% active_repo = @project.repositories.find_by_name('origin') %>
     <% end %>
+			<% if active_repo %>
 			<div class="stats">
 				<h3>Last 3 days stats :</h3>
 				<% for day in (1..3) %>
@@ -22,6 +23,7 @@
 				<% end %>
 				
 			</div>
+			<% end %>
 
       <div class="last_commits">
 
